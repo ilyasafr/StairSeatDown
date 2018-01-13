@@ -35,7 +35,7 @@ class Main extends PluginBase implements Listener {
        		}
        		$this->Config = new Config($this->getDataFolder() . "message.yml", Config::YAML, [
 			'touch-popup' => '§b座るには再タップ',
-			'touch-popup' => '§b別の椅子に座るには再タップ',
+			'touch-popup-ver2' => '§b別の椅子に座るには再タップ',
 			'seat-down' => '§a階段に座りました'
 		]);
 	}
