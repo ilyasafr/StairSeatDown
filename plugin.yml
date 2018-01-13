@@ -1,7 +1,7 @@
 name: StairSeatDown
 main: StairSeatDown\Main
 author: gamesukimanIRS
-authors: ["maru(パケット関連参考)","DusKong(パケット関連サンプルコードを頂きました)"]
+authors: ["maru(このプラグインの型の製作者)","DusKong(パケット関連サンプルコードを頂きました)"]
 version: "1.0.0"
 api:
 - 3.0.0
