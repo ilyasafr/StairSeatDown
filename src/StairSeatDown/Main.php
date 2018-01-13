@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
 		if(!file_exists($this->getDataFolder())){ 
          		mkdir($this->getDataFolder(), 0756, true); 
        		}
-       		$this->money = new Config($this->getDataFolder() . "message.yml", Config::YAML, [
+       		$this->Config = new Config($this->getDataFolder() . "message.yml", Config::YAML, [
 			'touch-popup' => '§b座るには再タップ',
 			'touch-popup' => '§b別の椅子に座るには再タップ',
 			'seat-down' => '§a階段に座りました'
@@ -81,7 +81,7 @@ class Main extends PluginBase implements Listener {
  		$pk->metadata = [
  			Entity::DATA_FLAGS => [Entity::DATA_TYPE_LONG, $flags],
  		];
- 		$pk->links[] = [$pk->entityRuntimeId,$this->player->getId(),Server::getInstance()->broadcastPacket(Server::getInstance()->getOnlinePlayers(), $pk)];
+ 		$pk->links[] = [$pk->entityRuntimeId,$player->getId(),Server::getInstance()->broadcastPacket(Server::getInstance()->getOnlinePlayers(), $pk)];
 		$player->sendPopup($this->get("seat-down"));
 	}
 	public function StandUp($player){
