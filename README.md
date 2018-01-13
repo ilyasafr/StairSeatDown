@@ -6,7 +6,7 @@ Poggitビルドステータス  
 [![PoggitCI Badge](https://poggit.pmmp.io/ci.badge/gamesukimanIRS/StairSeatDown/StairSeatDown/)](https://poggit.pmmp.io/ci/gamesukimanIRS/StairSeatDown/StairSeatDown)
 
 ### プラグイン概要
-階段をダブル右クリック(ダブルタップ)でその階段に座ることができます。    
+階段をダブル右クリック(ダブルタップ)でその階段に座ることができます。  
 座る際のメッセージはConfigより変更可能です。
 ### 使用方法
 上記ビルドステータスをクリック、PoggitCiにアクセスして最新ビルドからダウンロードしてください。  
