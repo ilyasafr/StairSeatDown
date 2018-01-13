@@ -20,9 +20,6 @@ use pocketmine\network\mcpe\protocol\RemoveEntityPacket;
 use pocketmine\Server;
 
 class Main extends PluginBase implements Listener {
-	private $onChair = [ ];
-	private $doubleTap = [ ];
-
 	public function onEnable() {
 		$PluginName = "StairSeatDown";
 		$version = "1.0.0";
@@ -38,7 +35,17 @@ class Main extends PluginBase implements Listener {
 			'touch-popup-ver2' => '§b別の椅子に座るには再タップ',
 			'seat-down' => '§a階段に座りました'
 		]);
+		if(isset($onChair)){
+			unset($onChair);
+		}
+		if(isset($doubleTap)){
+			unset($doubleTap);
+		}
 	}
+	
+	private $onChair = [ ];
+	private $doubleTap = [ ];
+	
 	public function get($m) {
 		return $this->Config->get($m);
 	}
@@ -81,7 +88,7 @@ class Main extends PluginBase implements Listener {
  		$pk->metadata = [
  			Entity::DATA_FLAGS => [Entity::DATA_TYPE_LONG, $flags],
  		];
- 		$pk->links[] = [$pk->entityRuntimeId,$this->player->getId(),2,0];
+ 		$pk->links[] = [$pk->entityRuntimeId,$player->getId(),2,0];
 		Server::getInstance()->broadcastPacket(Server::getInstance()->getOnlinePlayers(), $pk);
 		$player->sendPopup($this->get("seat-down"));
 	}
