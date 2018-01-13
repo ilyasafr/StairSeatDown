@@ -60,11 +60,17 @@ class Main extends PluginBase implements Listener {
 				} else {
 					$this->StandUp($player);
 					unset ( $this->onChair [$player->getName ()] );
+					unset ( $this->doubleTap[$player->getName()] );
 					$this->SeatDown($player, $block);	
 				}
 			}else{
-				$this->doubleTap [$player->getName ()] = "1stTapComplete";
-				$player->sendPopup ($this->get("touch-popup-ver2"));
+				if(!isset($this->onChair[$player->getName()])){
+					$this->doubleTap[$player->getName()] = "1stTapComplete";
+					$player->sendPopup($this->get("touch-popup");
+				}else{
+					$this->doubleTap [$player->getName ()] = "1stTapComplete";
+					$player->sendPopup ($this->get("touch-popup-ver2"));
+				}
 			}
 		}
 	}
