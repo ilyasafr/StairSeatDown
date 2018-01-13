@@ -110,6 +110,7 @@ class Main extends PluginBase implements Listener {
 			if ($packet->action === PlayerActionPacket::ACTION_JUMP && isset ( $this->onChair [$player->getName ()] )) {
 				$this->StandUp($player);
 				unset ( $this->onChair [$player->getName ()] );
+				unset($this->doubleTap[$player->getName()]);
 			}
 		}
 	}
@@ -118,6 +119,7 @@ class Main extends PluginBase implements Listener {
 		if (isset ( $this->onChair [$player->getName ()] )) {
 			$this->StandUp($player);
 			unset ( $this->onChair [$player->getName ()] );
+			unset($this->doubleTap[$player->getName()]);
 		}
 	}
 }
