@@ -24,9 +24,9 @@ class Main extends PluginBase implements Listener {
 		$PluginName = "StairSeatDown";
 		$version = "1.0.0";
     		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-    		$this->getlogger()->info($PluginName."Version:".$version."を読み込みました。作者:gamesukimanIRS");
+    		$this->getlogger()->info($PluginName."Version:".$version."を読み込みました。作者:gamesukimanIRS, maru");
     		$this->getlogger()->warning("製作者偽りと二次配布、改造、改造配布はおやめ下さい。");
-    		$this->getlogger()->info("このプラグインを使用する際はどこかにプラグイン名「".$PluginName."」と作者名「gamesukimanIRS」を記載する事を推奨します。");
+    		$this->getlogger()->info("このプラグインを使用する際はどこかにプラグイン名「".$PluginName."」と作者名「gamesukimanIRS, maru」を記載する事を推奨します。");
 		if(!file_exists($this->getDataFolder())){ 
          		mkdir($this->getDataFolder(), 0756, true); 
        		}
