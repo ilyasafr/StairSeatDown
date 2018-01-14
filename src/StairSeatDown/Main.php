@@ -66,7 +66,7 @@ class Main extends PluginBase implements Listener {
 			}else{
 				if(!isset($this->onChair[$player->getName()])){
 					$this->doubleTap[$player->getName()] = "1stTapComplete";
-					$player->sendPopup($this->get("touch-popup");
+					$player->sendPopup($this->get("touch-popup"));
 				}else{
 					$this->doubleTap [$player->getName ()] = "1stTapComplete";
 					$player->sendPopup ($this->get("touch-popup-ver2"));
