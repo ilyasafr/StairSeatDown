@@ -1,24 +1,18 @@
 <?php
-
 namespace StairSeatDown;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\block\Stair;
 use pocketmine\entity\Entity;
 use pocketmine\event\server\DataPacketReceiveEvent;
-use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\entity\Item;
-use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
 use pocketmine\network\mcpe\protocol\AddEntityPacket;
 use pocketmine\math\Vector3;
-use pocketmine\network\mcpe\protocol\SetEntityLinkPacket;
 use pocketmine\network\mcpe\protocol\PlayerActionPacket;
 use pocketmine\network\mcpe\protocol\RemoveEntityPacket;
 use pocketmine\Server;
-
 class Main extends PluginBase implements Listener {
 	public function onEnable() {
 		$PluginName = "StairSeatDown";
@@ -28,8 +22,8 @@ class Main extends PluginBase implements Listener {
     		$this->getlogger()->warning("このプラグインはLGPLライセンスにより配布されています。");
 		$this->getLogger()->notice("このプラグインのコードの元はPmChairより引用しています。");
     		$this->getlogger()->info("このプラグインを使用する際はどこかにプラグイン名「".$PluginName."」と作者名「gamesukimanIRS, maru」を記載する事を推奨します。");
-		if(!file_exists($this->getDataFolder())){ 
-         		mkdir($this->getDataFolder(), 0756, true); 
+		if(!file_exists($this->getDataFolder())){
+         		mkdir($this->getDataFolder(), 0756, true);
        		}
        		$this->Config = new Config($this->getDataFolder() . "message.yml", Config::YAML, [
 			'touch-popup' => '§b座るには再タップ',
@@ -43,15 +37,16 @@ class Main extends PluginBase implements Listener {
 			unset($doubleTap);
 		}
 	}
-	
+
 	private $onChair = [ ];
 	private $doubleTap = [ ];
-	
+
 	public function get($m) {
 		return $this->Config->get($m);
 	}
 	public function onTouch(PlayerInteractEvent $event) {
-		if(event->getAction() == Action->RIGHT_CLICK_BLOCK) {
+	    $action = $event->getAction();
+		if($action == PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
 			$player = $event->getPlayer ();
 			$block = $event->getBlock ();
 			if ($block instanceof Stair) {
@@ -63,7 +58,7 @@ class Main extends PluginBase implements Listener {
 						$this->StandUp($player);
 						unset ( $this->onChair [$player->getName ()] );
 						unset ( $this->doubleTap[$player->getName()] );
-						$this->SeatDown($player, $block);	
+						$this->SeatDown($player, $block);
 					}
 				}else{
 					if(!isset($this->onChair[$player->getName()])){
