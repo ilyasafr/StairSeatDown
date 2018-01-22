@@ -51,26 +51,28 @@ class Main extends PluginBase implements Listener {
 		return $this->Config->get($m);
 	}
 	public function onTouch(PlayerInteractEvent $event) {
-		$player = $event->getPlayer ();
-		$block = $event->getBlock ();
-		if ($block instanceof Stair) {
-			if (isset($this->doubleTap[$player->getName()])) {
-				if(!isset($this->onChair[$player->getName()])){
-					$this->SeatDown($player, $block);
-					unset($this->doubleTap[$player->getName()]);
-				} else {
-					$this->StandUp($player);
-					unset ( $this->onChair [$player->getName ()] );
-					unset ( $this->doubleTap[$player->getName()] );
-					$this->SeatDown($player, $block);	
-				}
-			}else{
-				if(!isset($this->onChair[$player->getName()])){
-					$this->doubleTap[$player->getName()] = "1stTapComplete";
-					$player->sendPopup($this->get("touch-popup"));
+		if(event->getAction() == Action->RIGHT_CLICK_BLOCK) {
+			$player = $event->getPlayer ();
+			$block = $event->getBlock ();
+			if ($block instanceof Stair) {
+				if (isset($this->doubleTap[$player->getName()])) {
+					if(!isset($this->onChair[$player->getName()])){
+						$this->SeatDown($player, $block);
+						unset($this->doubleTap[$player->getName()]);
+					} else {
+						$this->StandUp($player);
+						unset ( $this->onChair [$player->getName ()] );
+						unset ( $this->doubleTap[$player->getName()] );
+						$this->SeatDown($player, $block);	
+					}
 				}else{
-					$this->doubleTap [$player->getName ()] = "1stTapComplete";
-					$player->sendPopup ($this->get("touch-popup-ver2"));
+					if(!isset($this->onChair[$player->getName()])){
+						$this->doubleTap[$player->getName()] = "1stTapComplete";
+						$player->sendPopup($this->get("touch-popup"));
+					}else{
+						$this->doubleTap [$player->getName ()] = "1stTapComplete";
+						$player->sendPopup ($this->get("touch-popup-ver2"));
+					}
 				}
 			}
 		}
