@@ -45,7 +45,7 @@ class Main extends PluginBase implements Listener {
 		return $this->Config->get($m);
 	}
 	public function onTouch(PlayerInteractEvent $event) {
-		if($event->getPlayer()->getItemInHand() == 0) {
+		if($event->getPlayer()->getItemInHand()->getId() == 0) {
 			$player = $event->getPlayer ();
 			$block = $event->getBlock ();
 			if ($block instanceof Stair) {
