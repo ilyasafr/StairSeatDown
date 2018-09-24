@@ -14,7 +14,6 @@ use pocketmine\network\mcpe\protocol\PlayerActionPacket;
 use pocketmine\network\mcpe\protocol\RemoveEntityPacket;
 use pocketmine\Server;
 use pocketmine\network\mcpe\protocol\types\EntityLink;
-
 class Main extends PluginBase implements Listener {
 	public function onEnable() {
 		$PluginName = "StairSeatDown";
