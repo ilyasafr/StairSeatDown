@@ -19,17 +19,17 @@ class Main extends PluginBase implements Listener {
 		$PluginName = "StairSeatDown";
 		$version = "1.0.0";
     		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-    		$this->getlogger()->info($PluginName."Version:".$version."を読み込みました。作者:gamesukimanIRS, maru");
-    		$this->getlogger()->warning("このプラグインはLGPLライセンスにより配布されています。");
-		$this->getLogger()->notice("このプラグインのコードの元はPmChairより引用しています。");
-    		$this->getlogger()->info("このプラグインを使用する際はどこかにプラグイン名「".$PluginName."」と作者名「gamesukimanIRS, maru」を記載する事を推奨します。");
+    		$this->getlogger()->info($PluginName."Version:".$version."Kami mengisinya. Pengarang: gamesempatIRS, maru");
+    		$this->getlogger()->warning("Plug-in ini didistribusikan di bawah lisensi LGPL.");
+		$this->getLogger()->notice("Sumber kode plugin ini dikutip dari PmChair.");
+    		$this->getlogger()->info("Saat menggunakan plugin ini, pasang nama plugin di suatu tempat [".$PluginName."] Dan nama penulis [gamesukimanIRS, maru] Disarankan untuk mendeskripsikan.");
 		if(!file_exists($this->getDataFolder())){
          		mkdir($this->getDataFolder(), 0756, true);
        		}
        		$this->Config = new Config($this->getDataFolder() . "message.yml", Config::YAML, [
-			'touch-popup' => '§b座るには再タップ',
-			'touch-popup-ver2' => '§b座るには再タップ',
-			'seat-down' => '§a階段に座りました'
+			'touch-popup' => '§bTekan ulang untuk duduk',
+			'touch-popup-ver2' => '§bKetuk ulang untuk duduk',
+			'seat-down' => '§aSaya duduk di tangga'
 		]);
 		if(isset($onChair)){
 			unset($onChair);
